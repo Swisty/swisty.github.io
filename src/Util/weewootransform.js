@@ -53,20 +53,21 @@ const get_date_diff_days = (d1, d2) => {
     return date.subtract(d1t, d2t).toDays()
 }
 
-const from_gregorian_to_weewoo = (g_date) => {
+const from_gregorian_to_weewoo = (g_date_o) => {
+    var g_date = date.addHours(g_date_o, -10)
     var offset = get_offset(g_date.getYear(), g_date.getMonth())
     if(g_date.getDate() > offset) {
-        return {year: g_date.getYear() + 1900, month: g_date.getMonth() + 1, day: g_date.getDate() - offset}
+        return {year: g_date.getYear() + 1900, month: g_date.getMonth() + 1, day: g_date.getDate() - offset, hours: g_date.getHours(), minutes: g_date.getMinutes(), seconds: g_date.getSeconds()}
     } else if(g_date.getMonth() > 0) {
         offset = get_offset(g_date.getYear(), g_date.getMonth() - 1)
         var ldopm = get_last_day_of_month(g_date.getYear(), g_date.getMonth() - 1)
         var delta = get_date_diff_days(g_date, ldopm)
-        return {year: g_date.getYear() + 1900, month: g_date.getMonth(), day: ldopm.getDate() + delta - offset}
+        return {year: g_date.getYear() + 1900, month: g_date.getMonth(), day: ldopm.getDate() + delta - offset, hours: g_date.getHours(), minutes: g_date.getMinutes(), seconds: g_date.getSeconds()}
     } else {
         offset = get_offset(g_date.getYear() - 1, 11)
         var ldopm = get_last_day_of_month(g_date.getYear() - 1, 11)
         var delta = get_date_diff_days(g_date, ldopm)
-        return {year: g_date.getYear() - 1 + 1900, month: 12, day: ldopm.getDate() + delta - offset}
+        return {year: g_date.getYear() - 1 + 1900, month: 12, day: ldopm.getDate() + delta - offset, hours: g_date.getHours(), minutes: g_date.getMinutes(), seconds: g_date.getSeconds()}
     }
 }
 
@@ -75,12 +76,18 @@ const today_in_weewoo = () => {
     return from_gregorian_to_weewoo(d)
 }
 
-const stringify_weewoo = (weewoo) => {
+const stringify_weewoo_date = (weewoo) => {
     return weekday_map[(weewoo.day - 1) % 7] + ", " + month_map[weewoo.month] + " " + weewoo.day + ", " + weewoo.year
+}
+
+const stringify_weewoo_time = (weewoo) => {
+    var td = new Date(1970, 1, 1, weewoo.hours, weewoo.minutes, weewoo.seconds)
+    return date.format(td, "h:mm:ss A")
 }
 
 export {
     from_gregorian_to_weewoo,
     today_in_weewoo,
-    stringify_weewoo
+    stringify_weewoo_date,
+    stringify_weewoo_time
 }

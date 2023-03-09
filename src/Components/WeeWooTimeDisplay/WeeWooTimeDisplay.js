@@ -1,12 +1,12 @@
 import React from 'react';
-import date from 'date-and-time';
+import { stringify_weewoo_time } from '../../Util/weewootransform';
 import './WeeWooTimeDisplay.css'
 
 
 const WeeWooTimeDisplay = (props) => {
     return (
         <div className="timebox">
-                {date.format(props.display_date, 'h:mm:ss A')}
+            { stringify_weewoo_time(props.display_date)}
         </div>
     )
 }

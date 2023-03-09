@@ -1,12 +1,12 @@
 import React from 'react';
-import { stringify_weewoo, from_gregorian_to_weewoo } from '../../Util/weewootransform';
+import { stringify_weewoo_date } from '../../Util/weewootransform';
 import './WeeWooDateDisplay.css'
 
 
 const WeeWooDateDisplay = (props) => {
     return (
         <div className="datebox">
-            { stringify_weewoo(from_gregorian_to_weewoo(props.display_date)) }
+            { stringify_weewoo_date(props.display_date) }
         </div>
     )
 }
