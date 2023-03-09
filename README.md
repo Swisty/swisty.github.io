@@ -1,6 +1,6 @@
-# Weewooian Calendar
+# Weewoogian Calendar
 
-The Weewooian calendar is a calendar with the following properties:
+The Weewoogian calendar is a calendar with the following properties:
 
 - The first day of each month corresponds to the monthly tornado siren tests
 - The days and months are renamed thematically

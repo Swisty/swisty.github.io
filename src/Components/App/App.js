@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { stringify_weewoo, from_gregorian_to_weewoo } from '../../Util/weewootransform';
-import { range } from 'range'
 import date from 'date-and-time';
 
 
