@@ -7,7 +7,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.weewoo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #222233;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  letter-spacing: 0.1rem;
+}
+
+.weewoodate {
+  display: flex;
+  font-size: 4rem;
+  color: #CCCCDD;
+}
+
+.weewootime {
+  display: flex;
+  font-size: 3rem;
+  color: #BBBBCC;
 }

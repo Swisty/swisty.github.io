@@ -20,9 +20,19 @@ const App = () => {
     }
 
     return (
-        <p>
-            {get_weewoo_string() + " " + date.format(current_date, "h:mm:ss A")}
-        </p>
+        <div className="weewoo">
+            <div className="weewoodate">
+                <p>
+                    {get_weewoo_string()}
+                </p>
+            </div>
+            <div className="weewootime">
+                <p>
+                    {date.format(current_date, 'h:mm:ss A')}
+                </p>
+            </div>
+        </div>
+
     )
 }
 
